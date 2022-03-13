@@ -1,15 +1,17 @@
 import Item from "./Item";
 import Sidebar from "./Sidebar";
 
+// use state to control what is being showed with display
+
 function Display(props) {
 	// run a constructor to display all the items
 	return (
 		<section className="display-inventory">
-			<Sidebar />
+			<Sidebar setCurrentlyViewing={props.setCurrentlyViewing} />
 			<ul>
 				{
 					// map over array
-					props.currentlyShowing.map((currentItem) => {
+					props.currentInventory.map((currentItem) => {
 						return (
 							<Item
 								key={currentItem.data.key}

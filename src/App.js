@@ -13,23 +13,22 @@ function App() {
 	const [currentInventory, setCurrentInventory] = useState([]);
 	// a state that represents the current inventory as selected by the user
 	// const [currentInventory, setCurrentInventory] = useState({});
-	const [currentlyViewing, setCurrentlyViewing] = useState("");
+	const [currentlyViewing, setCurrentlyViewing] = useState("/coffees");
 
 	// show everything from DB in initial render of the page
-	useEffect(
-		() => {
-			const database = getDatabase(firebase);
-			const allRef = ref(database, "/");
-			const teaRef = ref(database, "/inventory/teas");
-			const coffeeRef = ref(database, "/inventory/coffees");
+	useEffect(() => {
+		const database = getDatabase(firebase);
+		const allRef = ref(database, "/inventory/");
+
+		if (currentlyViewing == "/") {
+			// show all
+		} else {
+			const dbRef = ref(database, `/inventory/${currentlyViewing}`);
 			const newState = [];
-
 			// get database repsonse
-			onValue(coffeeRef, (res) => {
+			onValue(dbRef, (res) => {
 				// placeholder state
-
 				const data = res.val();
-
 				// add all returned properties to our state
 				for (let key in data) {
 					newState.push({
@@ -37,19 +36,22 @@ function App() {
 						data: data[key],
 					});
 				}
-
 				// set it to state
 				setCurrentInventory(newState);
 			});
-		},
-		[] // this would likely be changed to currentView later, so that the page can re-render based on what the user wants to see)
-	);
+		}
+		// const teaRef = ref(database, "/inventory/teas");
+		// const coffeeRef = ref(database, "/inventory/coffees");
+	}, [currentlyViewing]);
 
 	return (
 		<>
 			<Header />
 			<main>
-				<Display currentlyShowing={currentInventory} />
+				<Display
+					currentInventory={currentInventory}
+					setCurrentlyViewing={setCurrentlyViewing}
+				/>
 			</main>
 			<Footer />
 		</>

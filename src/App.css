@@ -227,6 +227,9 @@ html {
 a {
 	text-decoration: none;
 }
+body {
+	font-family: "Montserrat", sans-serif;
+}
 
 div#root {
 	/* Fix issue with elements not taking up full width of page */
