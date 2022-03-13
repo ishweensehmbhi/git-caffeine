@@ -10,7 +10,7 @@ import Footer from "./components/Footer";
 function App() {
 	// a state that represents what the user wants to view
 
-	const [currentView, setCurrentView] = useState([]);
+	const [currentInventory, setCurrentInventory] = useState([]);
 	// a state that represents the current inventory as selected by the user
 	// const [currentInventory, setCurrentInventory] = useState({});
 
@@ -18,11 +18,13 @@ function App() {
 	useEffect(
 		() => {
 			const database = getDatabase(firebase);
-			const dbRef = ref(database, "/coffees");
+			const allRef = ref(database, "/");
+			const teaRef = ref(database, "/teas");
+			const coffeeRef = ref(database, "/coffees");
 			const newState = [];
 
 			// get database repsonse
-			onValue(dbRef, (res) => {
+			onValue(teaRef, (res) => {
 				// placeholder state
 
 				const data = res.val();
@@ -36,7 +38,7 @@ function App() {
 				}
 
 				// set it to state
-				setCurrentView(newState);
+				setCurrentInventory(newState);
 			});
 		},
 		[] // this would likely be changed to currentView later, so that the page can re-render based on what the user wants to see)
@@ -46,7 +48,7 @@ function App() {
 		<>
 			<Header />
 			<main>
-				<Display currentlyShowing={currentView} />
+				<Display currentlyShowing={currentInventory} />
 			</main>
 			<Footer />
 		</>
