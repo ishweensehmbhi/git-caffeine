@@ -13,18 +13,19 @@ function App() {
 	const [currentInventory, setCurrentInventory] = useState([]);
 	// a state that represents the current inventory as selected by the user
 	// const [currentInventory, setCurrentInventory] = useState({});
+	const [currentlyViewing, setCurrentlyViewing] = useState("");
 
 	// show everything from DB in initial render of the page
 	useEffect(
 		() => {
 			const database = getDatabase(firebase);
 			const allRef = ref(database, "/");
-			const teaRef = ref(database, "/teas");
-			const coffeeRef = ref(database, "/coffees");
+			const teaRef = ref(database, "/inventory/teas");
+			const coffeeRef = ref(database, "/inventory/coffees");
 			const newState = [];
 
 			// get database repsonse
-			onValue(teaRef, (res) => {
+			onValue(coffeeRef, (res) => {
 				// placeholder state
 
 				const data = res.val();

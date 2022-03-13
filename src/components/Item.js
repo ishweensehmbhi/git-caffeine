@@ -6,7 +6,7 @@ function Item(props) {
 				alt={`${props.altText}`}
 			></img>
 			<h2>{`${props.name}`}</h2>
-			<p>$ 25.00</p>
+			<p>${`${props.price}`}</p>
 		</li>
 	);
 }

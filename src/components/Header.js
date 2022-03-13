@@ -7,7 +7,7 @@ function Header() {
 		<header className="header">
 			<nav>
 				<a href="#">
-					<h1>Git Some Caffeine!</h1>
+					<h1>Git Caffeine</h1>
 				</a>
 				<div className="icon-container">
 					{

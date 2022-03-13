@@ -1,10 +1,12 @@
 import Item from "./Item";
+import Sidebar from "./Sidebar";
 
 function Display(props) {
 	// run a constructor to display all the items
 	return (
 		<section className="display-inventory">
-			<ul className="wrapper">
+			<Sidebar />
+			<ul>
 				{
 					// map over array
 					props.currentlyShowing.map((currentItem) => {
@@ -16,6 +18,7 @@ function Display(props) {
 								}
 								name={currentItem.data.name}
 								altText={currentItem.data.name}
+								price={currentItem.data.price}
 							/>
 						);
 					})

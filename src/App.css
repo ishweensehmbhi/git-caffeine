@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Pacifico&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Pacifico&display=swap");
 
 html {
 	line-height: 1.15;
@@ -228,34 +228,32 @@ a {
 	text-decoration: none;
 }
 
-body,
-main {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	width: 100%;
-	background-image: url("../assets/tile.png");
-}
-
 div#root {
 	/* Fix issue with elements not taking up full width of page */
 	width: 100%;
 }
 
+/* Header Styles */
+
 header {
 	width: 100%;
-	height: 600px;
-	background-color: white;
+	background-image: url("/assets/header-img.png");
+	height: 500px;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-color: #67bfbc;
+	background-size: 400px;
 }
 
 header h1 {
 	font-family: "Pacifico", cursive;
-	font-size: 1.2rem;
+	font-size: 1.4rem;
 	color: white;
 	filter: drop-shadow(1px, 1px, 3px, black);
+	margin: 0.2em 0;
 }
 
-nav {
+header nav {
 	position: fixed;
 	top: 0;
 	right: 0;
@@ -268,23 +266,84 @@ nav {
 	justify-content: space-around;
 }
 
+main {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-image: url("../assets/tile.png");
+}
+
 .wrapper {
 	max-width: 1200px;
 	width: 90%;
 }
 
+/* Sidebar Styles */
+
+.buttons-bar {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	height: fit-content;
+	background-color: rgba(231, 165, 71, 0.4);
+	width: 20%;
+	padding: 2%;
+	border-radius: 15px;
+	font-family: "Montserrat", sans-serif;
+	margin-top: 3%;
+	font-weight: 400;
+}
+
+.buttons-bar p {
+	font-weight: bold;
+	margin: 0;
+	margin-bottom: 15px;
+	border-bottom: 1px solid #442624;
+	text-align: center;
+	color: #442624;
+}
+
+.buttons-bar button {
+	color: black;
+	transition: color 0.35s;
+	margin: 1% 0;
+	border-radius: 15px;
+	border: none;
+	padding: 3%;
+	font-family: "Pacifico", cursive;
+}
+
+.buttons-bar button:hover,
+.buttons-bar button:focus {
+	background-color: #e4bb97;
+	transition: background-color 0.35s;
+	cursor: pointer;
+	color: #442624;
+}
+
+/* Inventory Display Styles */
+
+.display-inventory {
+	display: flex;
+	justify-content: center;
+	max-width: 1400px;
+}
+
 .display-inventory ul {
 	list-style: none;
 	display: flex;
+	justify-content: center;
 	flex-direction: row;
 	flex-wrap: wrap;
 	padding: 0;
 	margin: 0;
+	width: 80%;
 }
+
+/* Item Container styles */
 
 .item-container {
 	font-family: "Montserrat", sans-serif;
-	line-height: 20px;
 	width: calc(32% - 2%);
 	text-align: center;
 	background-color: #e7a547;
@@ -301,7 +360,53 @@ nav {
 	border-radius: 10px;
 }
 
+/* Footer Styles */
+
 footer {
 	display: flex;
-	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+}
+
+footer p {
+	margin: 0;
+}
+
+/* Media Queries */
+@media (max-width: 1400px) {
+	section {
+		padding: 0% 2%;
+	}
+}
+
+@media (max-width: 1200px) {
+	.display-inventory {
+		flex-direction: column;
+		align-items: center;
+	}
+	.display-inventory ul {
+		width: 100%;
+	}
+	.buttons-bar {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		width: 80%;
+	}
+	button {
+		width: 200px;
+		padding: 2%;
+	}
+}
+
+@media (max-width: 900px) {
+	.item-container {
+		width: calc(45% - 2%);
+	}
+}
+
+@media (max-width: 600px) {
+	.item-container {
+		width: calc(100%);
+	}
 }
