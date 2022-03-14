@@ -8,8 +8,6 @@ import Display from "./components/Display";
 import Footer from "./components/Footer";
 
 function App() {
-	// a state that represents what the user wants to view
-
 	const [currentInventory, setCurrentInventory] = useState([]);
 	// a state that represents the current inventory as selected by the user
 	// const [currentInventory, setCurrentInventory] = useState({});
@@ -18,16 +16,38 @@ function App() {
 	// show everything from DB in initial render of the page
 	useEffect(() => {
 		const database = getDatabase(firebase);
-		const allRef = ref(database, "/inventory/");
 
-		if (currentlyViewing == "/") {
+		if (currentlyViewing === "/") {
 			// show all
-		} else {
-			const dbRef = ref(database, `/inventory/${currentlyViewing}`);
+			const dbRef = ref(database, `/inventory/`);
 			const newState = [];
 			// get database repsonse
 			onValue(dbRef, (res) => {
-				// placeholder state
+				const allInventories = res.val();
+				// add all returned properties to our state
+				for (let type in allInventories) {
+					// for each of the objects, iterate through and push each item to the newState array
+					for (
+						let i = 0;
+						i < allInventories[type].length;
+						i++
+					) {
+						newState.push({
+							key: allInventories[type][i].key,
+							data: allInventories[type][i],
+						});
+					}
+				}
+				// set it to state
+				setCurrentInventory(newState);
+				console.log(newState);
+			});
+		} else {
+			const dbRef = ref(database, `/inventory/${currentlyViewing}`);
+			// placeholder state
+			const newState = [];
+			// get database repsonse
+			onValue(dbRef, (res) => {
 				const data = res.val();
 				// add all returned properties to our state
 				for (let key in data) {
@@ -38,10 +58,9 @@ function App() {
 				}
 				// set it to state
 				setCurrentInventory(newState);
+				console.log(newState);
 			});
 		}
-		// const teaRef = ref(database, "/inventory/teas");
-		// const coffeeRef = ref(database, "/inventory/coffees");
 	}, [currentlyViewing]);
 
 	return (

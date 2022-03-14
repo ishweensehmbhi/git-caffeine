@@ -229,6 +229,7 @@ a {
 }
 body {
 	font-family: "Montserrat", sans-serif;
+	animation: fadeIn 0.5s;
 }
 
 div#root {
@@ -293,17 +294,18 @@ main {
 	padding: 2%;
 	border-radius: 15px;
 	font-family: "Montserrat", sans-serif;
-	margin-top: 3%;
+	margin-left: 2%;
 	font-weight: 400;
 }
 
-.buttons-bar p {
+.buttons-bar h2 {
 	font-weight: bold;
 	margin: 0;
 	margin-bottom: 15px;
 	border-bottom: 1px solid #442624;
 	text-align: center;
 	color: #442624;
+	font-size: 1rem;
 }
 
 .buttons-bar button {
@@ -317,7 +319,8 @@ main {
 }
 
 .buttons-bar button:hover,
-.buttons-bar button:focus {
+.buttons-bar button:focus,
+.buttons-bar button:active {
 	background-color: #e4bb97;
 	transition: background-color 0.35s;
 	cursor: pointer;
@@ -330,6 +333,7 @@ main {
 	display: flex;
 	justify-content: center;
 	max-width: 1400px;
+	margin-bottom: 3%;
 }
 
 .display-inventory ul {
@@ -347,21 +351,26 @@ main {
 
 .item-container {
 	font-family: "Montserrat", sans-serif;
-	width: calc(32% - 2%);
+	width: calc(31%);
 	text-align: center;
 	background-color: #33261d;
 	color: white;
-	border-radius: 10px;
-	margin: 3% 1.5%;
+	border-radius: 5px;
+	margin: 1% 0.5%;
 	padding: 0.5% 0.5%;
 	box-shadow: 1px 1px 15px black;
+	animation: fadeIn ease-in 0.25s;
 }
 
 .item-container img {
 	height: 300px;
 	width: 100%;
 	object-fit: cover;
-	border-radius: 10px;
+	border-radius: 5px;
+}
+
+.item-container h3 {
+	font-family: "Pacifico", cursive;
 }
 
 /* Footer Styles */
@@ -370,10 +379,16 @@ footer {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	background-color: rgba(231, 165, 71, 0.4);
+	padding: 1%;
 }
 
 footer p {
 	margin: 0;
+	font-family: "Montserrat", sans-serif;
+	font-size: 0.8rem;
+	letter-spacing: 0.5px;
+	line-height: 20px;
 }
 
 /* Media Queries */
@@ -387,7 +402,7 @@ footer p {
 	.display-inventory ul {
 		width: 100%;
 	}
-	.buttons-bar p {
+	.buttons-bar h2 {
 		display: none;
 	}
 	.buttons-bar {
@@ -405,7 +420,7 @@ footer p {
 
 @media (max-width: 900px) {
 	.item-container {
-		width: calc(40%);
+		width: calc(45%);
 	}
 }
 
@@ -414,6 +429,19 @@ footer p {
 		padding: 0%;
 	}
 	.item-container {
-		width: calc(80%);
+		width: 95%;
+	}
+	.buttons-bar {
+		width: 95%;
+	}
+}
+
+/* keyframes */
+@keyframes fadeIn {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
 	}
 }

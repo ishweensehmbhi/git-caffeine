@@ -5,7 +5,7 @@ function Item(props) {
 				src={`${props.imageSource}`}
 				alt={`${props.altText}`}
 			></img>
-			<h2>{`${props.name}`}</h2>
+			<h3>{`${props.name}`}</h3>
 			<p>${`${props.price}`}</p>
 		</li>
 	);

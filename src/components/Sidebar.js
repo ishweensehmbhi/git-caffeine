@@ -7,7 +7,7 @@ function Sidebar(props) {
 
 	return (
 		<aside className="buttons-bar">
-			<p>filter by</p>
+			<h2>filter by</h2>
 			<button
 				value={"/"}
 				onClick={function (e) {
@@ -33,7 +33,14 @@ function Sidebar(props) {
 				{" "}
 				tea
 			</button>
-			<button value={"merch"}>merch</button>
+			<button
+				value={"merch"}
+				onClick={function (e) {
+					handleClick(e);
+				}}
+			>
+				merch
+			</button>
 		</aside>
 	);
 }
