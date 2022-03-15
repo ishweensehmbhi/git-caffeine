@@ -9,7 +9,7 @@ function Sidebar(props) {
 		<aside className="buttons-bar">
 			<h2>filter by</h2>
 			<button
-				value={"/"}
+				value={"all"}
 				onClick={function (e) {
 					handleClick(e);
 				}}

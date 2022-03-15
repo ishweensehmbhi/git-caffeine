@@ -14,13 +14,11 @@ function Display(props) {
 					props.currentInventory.map((currentItem) => {
 						return (
 							<Item
-								key={currentItem.data.key}
-								imageSource={
-									currentItem.data.img
-								}
-								name={currentItem.data.name}
-								altText={currentItem.data.name}
-								price={currentItem.data.price}
+								key={currentItem.key}
+								imageSource={currentItem.img}
+								name={currentItem.name}
+								altText={`an image of ${currentItem.name}`}
+								price={currentItem.price}
 							/>
 						);
 					})

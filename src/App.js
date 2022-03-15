@@ -8,57 +8,38 @@ import Display from "./components/Display";
 import Footer from "./components/Footer";
 
 function App() {
+	// a state that represents the currently displayed inventory
 	const [currentInventory, setCurrentInventory] = useState([]);
-	// a state that represents the current inventory as selected by the user
-	// const [currentInventory, setCurrentInventory] = useState({});
-	const [currentlyViewing, setCurrentlyViewing] = useState("/coffees");
+	// a state that represents the currently desired view as selected by the user using the left side buttons
+	const [currentlyViewing, setCurrentlyViewing] = useState("all");
 
-	// show everything from DB in initial render of the page
+	// show everything from DB in initial render of the page, as well as whenever currentlyViewing changes
 	useEffect(() => {
+		// get a snapshot of the database
 		const database = getDatabase(firebase);
 
-		if (currentlyViewing === "/") {
-			// show all
+		if (currentlyViewing === "all") {
+			// if user wants to view all, show all
 			const dbRef = ref(database, `/inventory/`);
 			const newState = [];
-			// get database repsonse
+			// get database repsonse (an object of 3 arrays)
 			onValue(dbRef, (res) => {
 				const allInventories = res.val();
-				// add all returned properties to our state
-				for (let type in allInventories) {
-					// for each of the objects, iterate through and push each item to the newState array
-					for (
-						let i = 0;
-						i < allInventories[type].length;
-						i++
-					) {
-						newState.push({
-							key: allInventories[type][i].key,
-							data: allInventories[type][i],
-						});
-					}
-				}
+				// combine all arrays into one big array using spread
+				newState.push(
+					...allInventories.coffees,
+					...allInventories.teas,
+					...allInventories.merch
+				);
 				// set it to state
 				setCurrentInventory(newState);
-				console.log(newState);
 			});
 		} else {
 			const dbRef = ref(database, `/inventory/${currentlyViewing}`);
-			// placeholder state
-			const newState = [];
 			// get database repsonse
 			onValue(dbRef, (res) => {
-				const data = res.val();
-				// add all returned properties to our state
-				for (let key in data) {
-					newState.push({
-						key: key,
-						data: data[key],
-					});
-				}
-				// set it to state
-				setCurrentInventory(newState);
-				console.log(newState);
+				const inventory = res.val();
+				setCurrentInventory(inventory);
 			});
 		}
 	}, [currentlyViewing]);
