@@ -1,8 +1,11 @@
 // import { useState, useEffect } from "react";
 
-function Header() {
-	// const [shoppingBag, setShoppingBag] = useState([]);
+// FontAwesome Imports
+import ReactDOM from "react-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCoffee } from "@fortawesome/free-solid-svg-icons";
 
+function Header() {
 	return (
 		<header className="header">
 			<nav>
@@ -16,7 +19,7 @@ function Header() {
 					<span>
 						{
 							1
-							//some prop
+							//some prop here that receives data from firebase about what is in the cart
 						}
 					</span>
 					{/*shopping cart icon and span with count (passed
