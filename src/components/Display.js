@@ -2,7 +2,7 @@ import Item from "./Item";
 import Sidebar from "./Sidebar";
 import { useState, useEffect } from "react";
 import firebase from "../firebase";
-import { getDatabase, ref, onValue } from "firebase/database";
+import { getDatabase, ref, get, onValue } from "firebase/database";
 
 // use state to control what is being showed with display
 
@@ -21,10 +21,10 @@ function Display() {
 			// if user wants to view all, show all
 			const dbRef = ref(database, `/inventory/`);
 			const newState = [];
-			// get database repsonse (an object of 3 arrays)
+			// get database repsonse
 			onValue(dbRef, (res) => {
 				const allInventories = res.val();
-				// combine all arrays into one big array using spread
+				// combine all types of merch available at the inventory node into one big node
 				newState.push(
 					...allInventories.coffees,
 					...allInventories.teas,
