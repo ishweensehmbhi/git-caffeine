@@ -6,9 +6,8 @@ function Header() {
 	return (
 		<header className="header">
 			<nav>
-				<a href="#">
-					<h1>Git Caffeine</h1>
-				</a>
+				<h1>Git Caffeine</h1>
+
 				<div className="icon-container">
 					{
 						// image goes here

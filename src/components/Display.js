@@ -2,7 +2,7 @@ import Item from "./Item";
 import Sidebar from "./Sidebar";
 import { useState, useEffect } from "react";
 import firebase from "../firebase";
-import { getDatabase, ref, get, onValue } from "firebase/database";
+import { getDatabase, ref, onValue } from "firebase/database";
 
 // use state to control what is being showed with display
 
