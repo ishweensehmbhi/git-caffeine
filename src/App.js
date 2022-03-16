@@ -7,7 +7,8 @@ import Footer from "./components/Footer";
 
 function App() {
 	// Second state is for whether the cart is visible to the user or not at the moment
-	const [cartVisible, setCartVisibility] = useState(false);
+	// Remove from production for now
+	// const [cartVisible, setCartVisibility] = useState(false);
 
 	return (
 		<>
