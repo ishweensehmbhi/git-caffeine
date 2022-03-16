@@ -1,5 +1,4 @@
 import "./App.css";
-import { useState } from "react";
 // Import Display component
 import Header from "./components/Header";
 import Display from "./components/Display";
