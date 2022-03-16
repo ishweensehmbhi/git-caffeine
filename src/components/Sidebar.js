@@ -1,10 +1,10 @@
 function Sidebar(props) {
 	function handleClick(e) {
-		// When button is clicked, set the state of currentlyViewing [as received from App.js] to the value received
-		// console.log(e.target.value);
+		// When button is clicked, set the state of currentlyViewing [as received from Display.js] to the value received
 		props.setCurrentlyViewing(e.target.value);
 	}
 
+	// Return a sidebar where the buttons all have unique values and a handle click function assigned
 	return (
 		<aside className="buttons-bar">
 			<h2>filter by</h2>

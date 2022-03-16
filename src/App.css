@@ -274,9 +274,10 @@ header .icon-container {
 	color: white;
 	font-size: 1.5rem;
 	position: relative;
+	padding-top: 5px;
 }
 
-header .icon-container span {
+header .icon-container p {
 	font-size: 0.75rem;
 	position: absolute;
 	top: -10px;
@@ -383,7 +384,7 @@ main {
 	animation: fadeIn ease-in 0.25s;
 	display: flex;
 	flex-direction: column;
-	justify-content: space-evenly;
+	justify-content: space-between;
 }
 
 .item-container img {
@@ -445,7 +446,7 @@ footer p {
 @media (max-width: 1200px) {
 	.display-inventory {
 		flex-direction: column;
-		align-items: center;
+		align-items: stretch;
 		width: 100%;
 	}
 	.display-inventory ul {

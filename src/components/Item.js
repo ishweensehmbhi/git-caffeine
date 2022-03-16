@@ -19,10 +19,7 @@ function Item(props) {
 
 	return (
 		<li className="item-container">
-			<img
-				src={`${props.imageSource}`}
-				alt={`${props.altText}`}
-			></img>
+			<img src={`${props.imageSource}`} alt={`${props.altText}`} />
 
 			<div className="details-container">
 				<h3>{`${props.name}`}</h3>

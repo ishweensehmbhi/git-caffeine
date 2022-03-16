@@ -2,9 +2,7 @@ import Item from "./Item";
 import Sidebar from "./Sidebar";
 import { useState, useEffect } from "react";
 import firebase from "../firebase";
-import { getDatabase, ref, onValue } from "firebase/database";
-
-// use state to control what is being showed with display
+import { getDatabase, ref, get } from "firebase/database";
 
 function Display() {
 	// a state that represents the currently displayed inventory
@@ -16,13 +14,11 @@ function Display() {
 	useEffect(() => {
 		// get a snapshot of the database
 		const database = getDatabase(firebase);
-
 		if (currentlyViewing === "all") {
-			// if user wants to view all, show all
 			const dbRef = ref(database, `/inventory/`);
 			const newState = [];
 			// get database repsonse
-			onValue(dbRef, (res) => {
+			get(dbRef).then((res) => {
 				const allInventories = res.val();
 				// combine all types of merch available at the inventory node into one big node
 				newState.push(
@@ -36,7 +32,7 @@ function Display() {
 		} else {
 			const dbRef = ref(database, `/inventory/${currentlyViewing}`);
 			// get database repsonse
-			onValue(dbRef, (res) => {
+			get(dbRef).then((res) => {
 				const inventory = res.val();
 				setCurrentInventory(inventory);
 			});

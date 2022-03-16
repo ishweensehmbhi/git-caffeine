@@ -1,4 +1,5 @@
 import "./App.css";
+import { useState } from "react";
 // Import Display component
 import Header from "./components/Header";
 import Display from "./components/Display";
@@ -6,7 +7,6 @@ import Footer from "./components/Footer";
 
 function App() {
 	// Second state is for whether the cart is visible to the user or not at the moment
-	// Remove from production for now
 	// const [cartVisible, setCartVisibility] = useState(false);
 
 	return (

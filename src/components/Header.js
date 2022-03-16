@@ -39,7 +39,7 @@ function Header() {
 					<span className="sr-only">
 						number of items in cart
 					</span>
-					<span>{cartLength}</span>
+					<p>{cartLength}</p>
 					{/*shopping cart icon and span with count (passed
 					as a prop) goes here*/}
 				</div>
