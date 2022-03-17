@@ -5,19 +5,19 @@ import firebase from "../firebase";
 import { getDatabase, ref, get } from "firebase/database";
 
 function Display() {
-	// a state that represents the currently displayed inventory
+	// A state that represents the currently displayed inventory
 	const [currentInventory, setCurrentInventory] = useState([]);
-	// a state that represents the currently desired view as selected by the user using the left side buttons
+	// A state that represents the currently desired view as selected by the user using the left side buttons
 	const [currentlyViewing, setCurrentlyViewing] = useState("all");
 
-	// show everything from DB in initial render of the page, as well as whenever currentlyViewing changes
+	// Show everything from database in initial render of the page/whenever currentlyViewing changes
 	useEffect(() => {
-		// get a snapshot of the database
+		// Get a snapshot of the database
 		const database = getDatabase(firebase);
 		if (currentlyViewing === "all") {
 			const dbRef = ref(database, `/inventory/`);
 			const newState = [];
-			// get database repsonse
+			// Get database repsonse for all items
 			get(dbRef).then((res) => {
 				const allInventories = res.val();
 				// combine all types of merch available at the inventory node into one big node
@@ -31,7 +31,7 @@ function Display() {
 			});
 		} else {
 			const dbRef = ref(database, `/inventory/${currentlyViewing}`);
-			// get database repsonse
+			// Get database repsonse for currently viewing item
 			get(dbRef).then((res) => {
 				const inventory = res.val();
 				setCurrentInventory(inventory);
@@ -39,12 +39,13 @@ function Display() {
 		}
 	}, [currentlyViewing]);
 
+	// Render the inventory screen along with the sidebar
 	return (
 		<section className="display-inventory">
 			<Sidebar setCurrentlyViewing={setCurrentlyViewing} />
 			<ul>
 				{
-					// map over array
+					// Map over array of inventory items returned from database
 					currentInventory.map((currentItem) => {
 						return (
 							<Item
