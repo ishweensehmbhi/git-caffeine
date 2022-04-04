@@ -415,8 +415,7 @@ main {
 	border: none;
 }
 
-.item-container button:hover,
-.item-container button:focus {
+.item-container button:hover {
 	color: white;
 	font-weight: bold;
 	background-color: #692525;
