@@ -1,10 +1,13 @@
 function Footer() {
 	return (
 		<footer>
-			<p>Inventory images are from Unsplash.</p>
 			<p>
-				Made by <a href="https://ish.codes/">Ish</a> at{" "}
-				<a href="https://junocollege.com/">Juno College</a>,
+				Inventory images credits to Unsplash. Icon credits to
+				FontAwesome and SVGRepo.
+			</p>
+			<p>
+				Made by <a href="https://ish.codes/">Ishween Sehmbhi</a>{" "}
+				at <a href="https://junocollege.com/">Juno College</a>,
 				2022.
 			</p>
 		</footer>

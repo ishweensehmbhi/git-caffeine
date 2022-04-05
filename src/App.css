@@ -275,6 +275,14 @@ header .icon-container {
 	font-size: 1.5rem;
 	position: relative;
 	padding-top: 5px;
+	cursor: pointer;
+	transition: color 0.15s ease-in;
+}
+
+header .icon-container:hover,
+header .icon-container:focus {
+	color: #728861;
+	transition: color 0.15s ease-in;
 }
 
 header .icon-container p {
@@ -290,6 +298,73 @@ header .icon-container p {
 	filter: drop-shadow(1px 1px 1px black);
 	border: 2px solid white;
 	font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Shopping Cart Styles */
+
+.shopping-cart {
+	right: 0;
+	top: 0;
+	background-color: white;
+	position: fixed;
+	padding: 50px;
+	z-index: 20;
+	width: 600px;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	height: 100%;
+	overflow-y: scroll;
+}
+
+.shopping-cart .close-btn {
+	cursor: pointer;
+	position: absolute;
+	top: 30px;
+	right: 30px;
+	background-color: white;
+	border: none;
+	font-size: 1.5rem;
+}
+
+.shopping-cart button:focus,
+.shopping-cart button:hover {
+	color: #8b3131;
+}
+
+.shopping-cart .cart-item {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	margin-bottom: 30px;
+}
+
+.shopping-cart .img-container {
+	width: 30%;
+}
+
+.shopping-cart .img-container {
+	height: 200px;
+	width: 200px;
+}
+.shopping-cart .img-container img {
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+}
+
+.shopping-cart .text-container {
+	width: calc(70% - 20px);
+	margin-left: 20px;
+}
+
+.shopping-cart .cart-item-copy {
+	margin: 0;
+	font-size: 1rem;
+}
+
+.price-copy {
+	font-size: 0.9rem;
 }
 
 main {
@@ -415,7 +490,8 @@ main {
 	border: none;
 }
 
-.item-container button:hover {
+.item-container button:hover,
+.item-container button:focus {
 	color: white;
 	font-weight: bold;
 	background-color: #692525;
@@ -484,6 +560,9 @@ footer a:focus {
 @media (max-width: 900px) {
 	.item-container {
 		width: calc(45%);
+	}
+	.shopping-cart {
+		width: 100%;
 	}
 }
 
