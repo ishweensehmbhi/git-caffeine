@@ -65,6 +65,7 @@ function Cart(props) {
 							<div className="img-container">
 								<img
 									src={`${cartItem[1].imageSource}`}
+									alt={`${cartItem[1].altText}`}
 								></img>
 							</div>
 							<div className="text-container">
