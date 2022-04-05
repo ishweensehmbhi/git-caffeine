@@ -3,6 +3,7 @@ import { getDatabase, onValue, ref } from "firebase/database";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClose } from "@fortawesome/free-solid-svg-icons";
 import { useState, useEffect } from "react";
+import CartItem from "./CartItem";
 
 function Cart(props) {
 	const [cartItems, setCartItems] = useState([]);
@@ -60,25 +61,10 @@ function Cart(props) {
 				)}
 				{cartItems.map((cartItem) => {
 					return (
-						<div
-							className="cart-item"
+						<CartItem
 							key={cartItem[0]}
-						>
-							<div className="img-container">
-								<img
-									src={`${cartItem[1].imageSource}`}
-									alt={`${cartItem[1].altText}`}
-								></img>
-							</div>
-							<div className="text-container">
-								<h3 className="cart-item-copy">
-									{cartItem[1].name}
-								</h3>
-								<p className="price-copy">
-									$ {cartItem[1].price} CAD
-								</p>
-							</div>
-						</div>
+							cartItem={cartItem}
+						/>
 					);
 				})}
 			</div>
