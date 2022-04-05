@@ -59,9 +59,11 @@ function Cart(props) {
 					</p>
 				)}
 				{cartItems.map((cartItem) => {
-					console.log(cartItem);
 					return (
-						<div className="cart-item" key={cartItem}>
+						<div
+							className="cart-item"
+							key={cartItem[0]}
+						>
 							<div className="img-container">
 								<img
 									src={`${cartItem[1].imageSource}`}
