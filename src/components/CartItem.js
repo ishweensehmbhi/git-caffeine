@@ -7,7 +7,6 @@ function CartItem(props) {
 	// add a handleRemove function
 
 	function handleRemove(id) {
-		console.log(id);
 		const database = getDatabase(firebase);
 		const dbRef = ref(database, `/user/basket/current/${id}`);
 		remove(dbRef);
