@@ -49,9 +49,8 @@ function Cart(props) {
 				{Object.keys(cartItems).length === 0 ? (
 					<p>
 						Your cart is currently empty! Why not go
-						take a look at some of our awesome products?
-						We're certain we've got something just for
-						you.
+						take a look at some of our products? We're
+						certain we've got something just for you.
 					</p>
 				) : (
 					<p>
@@ -67,6 +66,14 @@ function Cart(props) {
 						/>
 					);
 				})}
+				{Object.keys(cartItems).length > 0 ? (
+					<button
+						className="checkout-btn"
+						aria-label="checkout items in cart"
+					>
+						Checkout
+					</button>
+				) : null}
 			</div>
 		</section>
 	);

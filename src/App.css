@@ -317,6 +317,10 @@ header .icon-container p {
 	overflow-y: scroll;
 }
 
+.shopping-cart .wrapper {
+	width: 100%;
+}
+
 .shopping-cart .close-btn {
 	cursor: pointer;
 	position: absolute;
@@ -327,8 +331,8 @@ header .icon-container p {
 	font-size: 1.5rem;
 }
 
-.shopping-cart button:focus,
-.shopping-cart button:hover {
+.shopping-cart .close-btn:focus,
+.shopping-cart .close-btn:hover {
 	color: #8b3131;
 }
 
@@ -355,7 +359,11 @@ header .icon-container p {
 
 .shopping-cart .text-container {
 	width: calc(70% - 20px);
+	height: 100%;
 	margin-left: 20px;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
 }
 
 .shopping-cart .cart-item-copy {
@@ -363,8 +371,42 @@ header .icon-container p {
 	font-size: 1rem;
 }
 
-.price-copy {
+.shopping-cart .checkout-btn {
+	background-color: #728861;
+	border: 2px solid grey;
+	color: white;
+	border-radius: 10px;
+	padding: 15px 30px;
+	cursor: pointer;
+	margin: 0 auto;
+	width: 100%;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: all 0.15s ease-in;
+}
+
+.shopping-cart .checkout-btn:hover,
+.shopping-cart .checkout-btn:focus {
+	color: black;
+	background-color: #b2d497;
+	transition: all 0.15s ease-in;
+	border: 2px solid white;
+}
+
+.shopping-cart .price-copy {
 	font-size: 0.9rem;
+}
+
+.shopping-cart .remove-btn {
+	border: 0;
+	cursor: pointer;
+	background-color: white;
+	font-size: 1.3rem;
+}
+
+.shopping-cart .remove-btn:hover,
+.shopping-cart .remove-btn:focus {
+	color: #8b3131;
 }
 
 main {
