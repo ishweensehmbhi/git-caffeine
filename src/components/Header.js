@@ -8,18 +8,30 @@ import { onValue, ref, getDatabase } from "firebase/database";
 function Header() {
 	const [cartLength, setCartLength] = useState(0);
 	const [showCart, setShowCart] = useState(false);
+	const [cartItems, setCartItems] = useState([]);
 
 	// On page load and on database update
 	// fetch the amount of items in cart from firebase
 	useEffect(() => {
 		const database = getDatabase(firebase);
 		const dbRef = ref(database, `/user/basket/current/`);
-		// get database repsonse (an object of objects which depicts items currently in cart)
+		// Get database repsonse (an object of objects which depicts items currently in cart)
 		onValue(dbRef, (res) => {
-			const itemsInCart = res.val();
-			// Get the amount of objects in that object and set that to Cart Length
-			// Lift that state back up to App!
-			setCartLength(Object.keys(itemsInCart).length);
+			const response = res.val();
+			if (response != null) {
+				// keep the key returned from firebase as well as the actual object
+				const newCart = Object.keys(response).map((key) => [
+					key,
+					response[key],
+				]);
+				// get the amount of objects in that object and set that to Cart Length
+				setCartLength(Object.keys(response).length);
+				// setCurrentInventory(newState);
+				setCartItems(newCart);
+			} else {
+				setCartLength(0);
+				setCartItems([]);
+			}
 		});
 	}, []);
 
@@ -43,7 +55,9 @@ function Header() {
 					<p>{cartLength}</p>
 				</div>
 			</nav>
-			{showCart ? <Cart setShowCart={setShowCart} /> : null}
+			{showCart ? (
+				<Cart setShowCart={setShowCart} cartItems={cartItems} />
+			) : null}
 		</header>
 	);
 }
