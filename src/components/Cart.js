@@ -15,15 +15,20 @@ function Cart(props) {
 		const dbRef = ref(database, `/user/basket/current/`);
 
 		onValue(dbRef, (res) => {
-			// this returns the items as an object of objects
-			const response = res.val();
-			// keep the key returned from firebase as well as the actual object
-			const newCart = Object.keys(response).map((key) => [
-				key,
-				response[key],
-			]);
-			// setCurrentInventory(newState);
-			setCartItems(newCart);
+			if (res.val() != null) {
+				// this returns the items as an object of objects
+				const response = res.val();
+
+				// keep the key returned from firebase as well as the actual object
+				const newCart = Object.keys(response).map((key) => [
+					key,
+					response[key],
+				]);
+				// setCurrentInventory(newState);
+				setCartItems(newCart);
+			} else {
+				setCartItems([]);
+			}
 		});
 	}, []);
 
